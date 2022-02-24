@@ -11,11 +11,11 @@ export default function DisplayDetails(props) {
         <h5 className="card-title">Current Price: &#8377; {data.HP}</h5>
         <p className="card-text"></p>
       </div>
-      <div class="accordion" id="accordionPanelsStayOpenExample">
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+      <div className="accordion" id="accordionPanelsStayOpenExample">
+        <div className="accordion-item">
+          <h2 className="accordion-header" id="panelsStayOpen-headingOne">
             <button
-              class="accordion-button"
+              className="accordion-button"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#panelsStayOpen-collapseOne"
@@ -27,10 +27,10 @@ export default function DisplayDetails(props) {
           </h2>
           <div
             id="panelsStayOpen-collapseOne"
-            class="accordion-collapse collapse show"
+            className="accordion-collapse collapse show"
             aria-labelledby="panelsStayOpen-headingOne"
           >
-            <div class="accordion-body">
+            <div className="accordion-body">
               <ul style={{'list-style-type':'none'}}>
                 <li><b>Previous Close: </b> {data.priceprevclose}</li>
                 <li><b>Price Change: </b> {data.pricechange}</li>

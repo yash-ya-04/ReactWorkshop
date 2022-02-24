@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import DisplayEmployee from "../../components/EmployeeActivity/DisplayEmployeeList";
 import employeeList from "../../data/EmployeeList";
+
 import "./SearchFilter.css"
 
 export default class SearchFilter extends Component {
