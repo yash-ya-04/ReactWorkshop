@@ -1,0 +1,41 @@
+.container {
+    padding-top: 30px;
+    width: 50%;
+    margin: auto;
+  }
+  
+  .input {
+    padding: 5px 15px;
+    width: 50%;
+  }
+  
+  .employee-list {
+    margin-top: 30px;
+  }
+  
+  .employee {
+    list-style: none;
+    margin: 10px 0;
+    padding: 10px;
+    background: #eee;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .employee-id {
+    color: red;
+    margin-right: 20px;
+  }
+  
+  .employee-name {
+    color: blue;
+  }
+  
+  .employee-age {
+    text-align: center;
+    margin-left: auto;
+  }
+
+  .employee-designation {
+    margin-left: auto;
+  }
