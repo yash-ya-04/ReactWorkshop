@@ -1,7 +1,6 @@
 export default function DisplayDetails(props) {
   var data = props.data;
   console.log(data);
-  debugger;
   return (
     <div className="card text-center" style={props.style}>
       <div className="card-header">

@@ -8,8 +8,8 @@ function App() {
   return (
     <>
     <Header/>
-    <StockComponent url={sbiurl}/>
-    <StockComponent url={nlcurl}/>
+    <StockComponent url={sbiurl} style={{width: '40%', marginLeft: '40px', marginTop: '40px', float: 'left'}}/>
+    <StockComponent url={nlcurl} style={{width: '40%', marginRight: '40px', marginTop: '40px', float: 'right'}}/>
     <Footer/>
     </>
   );

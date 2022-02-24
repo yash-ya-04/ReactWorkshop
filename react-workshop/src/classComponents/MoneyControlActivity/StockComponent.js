@@ -1,33 +1,28 @@
 import { Component } from "react";
 import Axios from "axios";
-import DisplayDetails from "../../components/MoneyControlActivity/Header";
-
+import DisplayDetails from "../../components/MoneyControlActivity/DisplayDetails";
 
 export default class StockComponent extends Component {
-    constructor() {
-        super();
-        this.state = {
-            data: {},
-            style : {width: '40%', marginTop: '40px', marginRight: '30px', float: 'right'}
-        }
-    }
+  constructor() {
+    super();
+    this.state = {
+      data: {},
+    };
+  }
 
-    render() {
-        return (
-            <>
-                <DisplayDetails data = {this.state.data} style={this.state.style}/>
-            </>
-        )
-    }
+  render() {
+    return (
+      <>
+        <DisplayDetails data={this.state.data} style = {this.props.style}/>
+      </>
+    );
+  }
 
-    componentDidMount() {
-        setInterval(this.getData, 1000);
-    }
+  componentDidMount() {
+    Axios.get(this.props.url).then((response) => {
+        this.setState({ data: response.data.data });
+        console.log(this.state.data);
+      })
+  }
 
-    getData() {
-        Axios.get(this.props.url).then((response) => {
-            this.setState({ data: response.data.data })
-            console.log(this.state.data)
-        });
-    }
 }
