@@ -7,7 +7,7 @@ export default function DisplayDetails(props) {
         {data.DISPID}&nbsp;{data.HN}
       </div>
       <div className="card-body">
-        <h5 className="card-title">Current Price: &#8377; {data.HP}</h5>
+        <h5 className="card-title">Current Price: &#8377; {data.pricecurrent}</h5>
         <p className="card-text"></p>
       </div>
       <div className="accordion" id="accordionPanelsStayOpenExample">
