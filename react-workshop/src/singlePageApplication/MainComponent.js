@@ -9,6 +9,5 @@ export default function MainComponent() {
                 <Route exact path="/" component={GetComponent}> </Route>
             </div>
         </BrowserRouter>
-    );
-    
+    );   
 }
