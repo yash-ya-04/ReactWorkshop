@@ -2,72 +2,64 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function Update() {
-  const [id, setId] = useState(0);
-  const [name, setName] = useState("");
-  const [age, setAge] = useState(0);
-  const [designation, setDesignation] = useState("");
-  const [createdAt, setCreatedAt] = useState("");
+  const [APIData, setAPIData] = useState([]);
 
   useEffect(() => {
-    setId(localStorage.getItem("id"));
-    setName(localStorage.getItem("name"));
-    setAge(localStorage.getItem("age"));
-    setDesignation(localStorage.getItem("designation"));
-    setCreatedAt(localStorage.getItem("createdAt"));
+    axios
+      .get(`https://60fbca4591156a0017b4c8a7.mockapi.io/fakeData`)
+      .then((response) => {
+        console.log(response.data);
+        setAPIData(response.data);
+      });
   }, []);
 
-  const updateData = () => {
-    axios.put("https://localhost:5001/api/Employee/" + { id }, {
-      name,
-      age,
-      designation,
-      createdAt,
+  const setData = (data) => {
+    let { id, name, age, designation, createdAt } = data;
+    localStorage.setItem("id", id);
+    localStorage.setItem("name", name);
+    localStorage.setItem("age", age);
+    localStorage.setItem("designation", designation);
+    localStorage.setItem("createdAt", createdAt);
+  };
+
+  const getData = () => {
+    axios.get("https://localhost:5001/api/Employee/").then((getData) => {
+      setAPIData(getData.data);
     });
-    console.log(name);
-    console.log(id);
-    console.log(age);
-    console.log(designation);
-    console.log(createdAt);
+  };
+
+  const onDelete = (id) => {
+    axios.delete("https://localhost:5001/api/Employee/" + { id }).then(() => {
+      getData();
+    });
   };
   return (
-    <fieldset>
-      <label>Id</label>
-      <input
-        type="number"
-        value={id}
-        placeholder="Id"
-        onChange={(e) => setId(e.target.value)}
-        readOnly
-      />
-      <label>Name</label>
-      <input
-        type="text"
-        value={name}
-        placeholder="Name"
-        onChange={(e) => setName(e.target.value)}
-      />
-      <label>Age</label>
-      <input
-        type="number"
-        value={age}
-        placeholder="Age"
-        onChange={(e) => setAge(e.target.value)}
-      />
-      <label>Designation</label>
-      <input
-        type="text"
-        value={designation}
-        placeholder="Designation"
-        onChange={(e) => setDesignation(e.target.value)}
-      />
-      <label>Joined On</label>
-      <input
-        type="date"
-        value={createdAt}
-        placeholder="Joined On"
-        onChange={(e) => setCreatedAt(e.target.value)}
-      />
-      <input value="Add" onClick={updateData} type="submit"></input>
-    </fieldset>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Age</th>
+          <th scope="col">Designation</th>
+          <th scope="col">Joined On</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {APIData.map((data) => {
+          return (
+            <tr>
+              <th scope="row">{data.id}</th>
+              <td>{data.name}</td>
+              <td>{data.age}</td>
+              <td>{data.designation}</td>
+              <td>{data.createdAt}</td>
+              <td><button onClick={() => onDelete(data.id)}>Delete</button></td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
   );
 }
