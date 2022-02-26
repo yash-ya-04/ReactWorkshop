@@ -19,13 +19,12 @@
 // export default App;
 
 import "./App.css";
-import Create from "./reactCrudOpWithHooks/Create";
+import SinglePageApplication from "./singlePageApplication/SinglePageApplication"
 
 export default function App() {
   return (
     <>
-      <h2>React Crud Operations</h2>
-      <Create />
+      <SinglePageApplication/>
     </>
   );
 }
